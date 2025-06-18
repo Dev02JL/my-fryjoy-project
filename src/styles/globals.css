@@ -1,0 +1,29 @@
+:root {
+  --color-background: #EEE7D9;
+  --color-text: #2c2f28;
+  --color-primary: #f16c2d;
+  --color-white: #ffffff;
+}
+
+/* Styles de base */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Classes utilitaires pour les couleurs */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+} 
