@@ -1,3 +1,21 @@
+@font-face {
+  font-family: 'Ramillas';
+  src: url('/fonts/Ramillas.woff2') format('woff2'),
+       url('/fonts/Ramillas.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quando';
+  src: url('/fonts/Quando-Regular.woff2') format('woff2'),
+       url('/fonts/Quando-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-background: #EEE7D9;
   --color-text: #2c2f28;
@@ -6,9 +24,18 @@
 }
 
 /* Styles de base */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  height: 100%;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+  height: 100%;
+  overflow-y: scroll;
+  font-family: var(--font-inter);
 }
 
 /* Classes utilitaires pour les couleurs */
@@ -26,4 +53,59 @@ body {
 
 .bg-white {
   background-color: var(--color-white);
+}
+
+/* Classes pour le scroll snap */
+.snap-section {
+  scroll-snap-align: start;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* Classes pour les polices */
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-geist {
+  font-family: var(--font-geist-sans);
+}
+
+.font-unbounded {
+  font-family: var(--font-unbounded);
+}
+
+.font-ramillas {
+  font-family: 'Ramillas', sans-serif;
+}
+
+.font-quando {
+  font-family: 'Quando', serif;
+}
+
+/* Styles pour les paragraphes */
+p {
+  font-family: var(--font-poppins);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+/* Styles pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
 } 
