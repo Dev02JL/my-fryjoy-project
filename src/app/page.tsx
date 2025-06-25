@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionValeursEcologiques from "./SectionValeursEcologiques";
+import SectionCommandePanier from "./SectionCommandePanier";
 
 export default function Home() {
   return (
@@ -53,21 +54,31 @@ export default function Home() {
       </section>
 
       {/* Section Description */}
-      <section id="description" className="snap-section flex items-center justify-center section-alt">
-        <div className="text-center py-20 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 animate-fade-in-up">Comment ça marche ?</h2>
-          <p className="text-lg sm:text-xl mb-4 animate-fade-in-up delay-100">
-            FryJoy est une machine révolutionnaire conçue pour réaliser chez vous des chips et crackers maison, sains et savoureux. Inspirée des meilleures technologies d'Air Fryer et de déshydratation, elle intègre une cuve unique issue de la LG HomeBrew pour une expérience simplifiée et performante.
-          </p>
-          <p className="text-lg sm:text-xl mb-4 animate-fade-in-up delay-200">
-            Variez les plaisirs : chips nature, aux fruits, aux légumes ou encore crackers croustillants… Laissez libre cours à votre créativité !
-          </p>
-          <p className="text-lg sm:text-xl mb-4 animate-fade-in-up delay-300">
-            Idéale pour des moments conviviaux entre amis, des goûters pour enfants, des brunchs ou des événements, FryJoy s'adapte à toutes vos envies.
-          </p>
-          <p className="text-lg sm:text-xl animate-fade-in-up delay-400">
-            Découvrez également notre catalogue de recettes exclusives, ou inventez les vôtres selon vos goûts et inspirations du moment.
-          </p>
+      <section id="description" className="snap-section flex items-center justify-center bg-light">
+        <div className="w-full max-w-4xl mx-auto py-20 px-4">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-primary animate-fade-in-up text-center">
+            Comment ça marche ?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+            {/* Étape 1 */}
+            <div className="bg-white rounded-2xl shadow-md p-12 px-4 flex flex-col items-center animate-fade-in-up delay-100 min-w-[320px] max-w-md mx-auto">
+              <div className="text-6xl mb-4">🥕</div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Préparez vos légumes</h3>
+              <p className="text-gray-700 text-center">Lavez, coupez et assaisonnez vos légumes préférés.</p>
+            </div>
+            {/* Étape 2 */}
+            <div className="bg-white rounded-2xl shadow-md p-12 px-4 flex flex-col items-center animate-fade-in-up delay-200 min-w-[320px] max-w-md mx-auto">
+              <div className="text-6xl mb-4">⚡</div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Lancez FryJoy</h3>
+              <p className="text-gray-700 text-center">Placez-les dans la machine, choisissez le mode, appuyez sur Start.</p>
+            </div>
+            {/* Étape 3 */}
+            <div className="bg-white rounded-2xl shadow-md p-12 px-4 flex flex-col items-center animate-fade-in-up delay-300 min-w-[320px] max-w-md mx-auto">
+              <div className="text-6xl mb-4">😋</div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Savourez !</h3>
+              <p className="text-gray-700 text-center">En quelques minutes, dégustez des snacks croustillants, sains et faits maison.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -75,95 +86,7 @@ export default function Home() {
       <SectionValeursEcologiques />
 
       {/* Section Commande */}
-      <section id="commande" className="snap-section flex items-center justify-center section-alt">
-        <div className="text-center py-20 max-w-2xl mx-auto w-full px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6 animate-fade-in-up">Commandez maintenant</h2>
-          <p className="text-lg sm:text-xl mb-8 animate-fade-in-up delay-100">
-            Remplissez le formulaire ci-dessous pour votre FryJoy.
-          </p>
-          
-          <form className="space-y-6 text-left animate-fade-in-up delay-200">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="animate-fade-in-left delay-300">
-                <label htmlFor="prenom" className="block text-sm font-medium mb-2">
-                  Prénom *
-                </label>
-                <input
-                  type="text"
-                  id="prenom"
-                  name="prenom"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth"
-                  placeholder="Votre prénom"
-                />
-              </div>
-              
-              <div className="animate-fade-in-right delay-300">
-                <label htmlFor="nom" className="block text-sm font-medium mb-2">
-                  Nom *
-                </label>
-                <input
-                  type="text"
-                  id="nom"
-                  name="nom"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth"
-                  placeholder="Votre nom"
-                />
-              </div>
-            </div>
-            
-            <div className="animate-fade-in-up delay-400">
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth"
-                placeholder="votre.email@exemple.com"
-              />
-            </div>
-            
-            <div className="animate-fade-in-up delay-500">
-              <label htmlFor="telephone" className="block text-sm font-medium mb-2">
-                Numéro de téléphone
-              </label>
-              <input
-                type="tel"
-                id="telephone"
-                name="telephone"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth"
-                placeholder="06 12 34 56 78"
-              />
-            </div>
-            
-            <div className="animate-fade-in-up delay-500">
-              <label htmlFor="adresse" className="block text-sm font-medium mb-2">
-                Adresse complète
-              </label>
-              <textarea
-                id="adresse"
-                name="adresse"
-                rows={3}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth"
-                placeholder="123 Rue de la Paix, 75001 Paris"
-              ></textarea>
-            </div>
-            
-            <div className="text-center pt-4 animate-slide-in-bottom delay-500">
-              <button
-                type="submit"
-                className="btn-innocent text-white hover-lift"
-              >
-                Commander
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+      <SectionCommandePanier />
     </div>
   );
 }
