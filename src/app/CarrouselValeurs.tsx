@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+"use client";
+import { useRef, useEffect } from "react";
 
 const valeurs = [
   {
@@ -40,50 +41,58 @@ const valeurs = [
 ];
 
 export default function CarrouselValeurs() {
-  const [index, setIndex] = useState(0);
-  const nbCartes = valeurs.length;
-  const nbAffichees = typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 2;
+  const trackRef = useRef<HTMLDivElement>(null);
 
-  // Responsive : 1 carte sur mobile, 2 sur desktop
-  const [cardsToShow, setCardsToShow] = useState(2);
   useEffect(() => {
-    function handleResize() {
-      setCardsToShow(window.innerWidth < 768 ? 1 : 2);
+    const track = trackRef.current;
+    if (!track) return;
+    let animationFrame: number;
+    let start: number | null = null;
+    let scrollLeft = 0;
+    const speed = 0.5; // pixels per frame, ajuster pour la vitesse
+
+    function step(timestamp: number) {
+      if (!track) return;
+      if (start === null) start = timestamp;
+      scrollLeft += speed;
+      if (track.scrollWidth - track.clientWidth - scrollLeft <= 0) {
+        scrollLeft = 0;
+      }
+      track.scrollLeft = scrollLeft;
+      animationFrame = requestAnimationFrame(step);
     }
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
   }, []);
 
-  // Défilement automatique
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + cardsToShow) % nbCartes);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [cardsToShow, nbCartes]);
-
-  // Affichage des cartes
-  const cartes = [];
-  for (let i = 0; i < cardsToShow; i++) {
-    const idx = (index + i) % nbCartes;
-    const v = valeurs[idx];
-    cartes.push(
-      <div key={v.title} className="animate-fade-in-up hover-lift transition-smooth">
-        <div className="bg-white rounded-2xl p-6 shadow-lg h-full mx-2">
-          <div className={`w-16 h-16 ${v.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-            <span className="text-2xl">{v.icon}</span>
-          </div>
-          <h3 className="text-xl font-bold mb-3">{v.title}</h3>
-          <p className="text-gray-600">{v.desc}</p>
-        </div>
-      </div>
-    );
-  }
+  // Duplique les valeurs pour un effet de boucle fluide
+  const valeursBoucle = [...valeurs, ...valeurs];
 
   return (
-    <div className="flex justify-center items-stretch w-full gap-4 transition-smooth">
-      {cartes}
+    <div
+      ref={trackRef}
+      className="w-full overflow-x-hidden"
+      style={{
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+      }}
+    >
+      <div className="flex gap-8 min-w-max py-2">
+        {valeursBoucle.map((v, i) => (
+          <div
+            key={v.title + i}
+            className="bg-white rounded-2xl p-6 shadow-lg h-full mx-2 min-w-[320px] max-w-xs flex-shrink-0 animate-fade-in-up hover-lift transition-smooth"
+          >
+            <div className={`w-16 h-16 ${v.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
+              <span className="text-2xl">{v.icon}</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">{v.title}</h3>
+            <p className="text-gray-600">{v.desc}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 } 
