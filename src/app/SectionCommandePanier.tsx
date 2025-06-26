@@ -16,7 +16,7 @@ export default function SectionCommandePanier() {
 
   return (
     <section id="commande" className="snap-section flex items-center justify-center section-alt min-h-screen">
-      <div className="w-full max-w-5xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div className="w-full max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Formulaire */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 animate-fade-in-up">Commandez maintenant</h2>
@@ -100,7 +100,7 @@ export default function SectionCommandePanier() {
           </form>
         </div>
         {/* Panier */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center min-h-[400px] w-full">
+        <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center min-h-[280px] w-full">
           <h3 className="text-2xl font-bold mb-6">Votre panier</h3>
           <div className="flex flex-col sm:flex-row items-center justify-center w-full gap-6">
             <Image
