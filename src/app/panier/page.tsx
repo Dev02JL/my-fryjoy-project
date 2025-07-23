@@ -1,5 +1,4 @@
 import SectionCommandePanier from "../SectionCommandePanier";
-import Link from "next/link";
 
 export default function PanierPage() {
   return (
