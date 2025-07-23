@@ -95,15 +95,15 @@ export default function SectionCommandePanier() {
         {/* Panier */}
         <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center justify-between min-h-[280px] w-full">
           <div className="flex flex-col items-center w-full">
-            <div className="flex justify-center mb-6 w-full">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-gray-400 to-gray-500 text-white px-5 py-2.5 rounded-lg font-medium text-base shadow-sm hover:shadow-md hover:scale-102 transition-all duration-200 hover:from-gray-500 hover:to-gray-600"
-              >
-                <span className="text-lg">←</span>
-                Retour à l&apos;accueil
-              </Link>
-            </div>
+                      <div className="flex justify-center mb-6 w-full">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#EEE7D9] to-[#E8E0D0] text-[#2c2f28] px-5 py-2.5 rounded-lg font-medium text-base shadow-sm hover:shadow-md hover:scale-102 transition-all duration-200 hover:from-[#E8E0D0] hover:to-[#E2DAC8]"
+            >
+              <span className="text-lg">←</span>
+              Retour à l&apos;accueil
+            </Link>
+          </div>
             <h3 className="text-2xl font-bold mb-6">Votre panier</h3>
             <div className="flex flex-col sm:flex-row items-center justify-center w-full gap-6">
               <Image
