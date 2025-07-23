@@ -6,7 +6,8 @@ import Link from "next/link";
 export default function SectionCommandePanier() {
   const [quantite, setQuantite] = useState(1);
   const [showSuccess, setShowSuccess] = useState(false);
-  const prixUnitaire = 69.99;
+  const [isBundle, setIsBundle] = useState(false);
+  const prixUnitaire = isBundle ? 95.00 : 69.90;
   const total = (quantite * prixUnitaire).toFixed(2);
 
   function handleSubmit(e: React.FormEvent) {
@@ -118,8 +119,8 @@ export default function SectionCommandePanier() {
                 <div className="flex items-center gap-4">
                   <button
                     type="button"
-                    className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 text-2xl font-bold flex items-center justify-center hover:from-orange-500 hover:to-orange-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-110"
-                    onClick={() => setQuantite(q => Math.max(1, q - 1))}
+                    className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 text-2xl font-bold flex items-center justify-center hover:from-orange-500 hover:to-orange-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-110 cursor-pointer"
+                    onClick={() => setQuantite(prev => Math.max(1, prev - 1))}
                     aria-label="Diminuer la quantité"
                   >
                     -
@@ -127,8 +128,8 @@ export default function SectionCommandePanier() {
                   <span className="text-2xl font-bold w-12 text-center">{quantite}</span>
                   <button
                     type="button"
-                    className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 text-2xl font-bold flex items-center justify-center hover:from-orange-500 hover:to-orange-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-110"
-                    onClick={() => setQuantite(q => q + 1)}
+                    className="w-12 h-12 rounded-full bg-gradient-to-r from-gray-100 to-gray-200 text-2xl font-bold flex items-center justify-center hover:from-orange-500 hover:to-orange-600 hover:text-white transition-all duration-300 shadow-md hover:shadow-lg hover:scale-110 cursor-pointer"
+                    onClick={() => setQuantite(prev => prev + 1)}
                     aria-label="Augmenter la quantité"
                   >
                     +
@@ -137,15 +138,27 @@ export default function SectionCommandePanier() {
                 <div className="mt-6 text-lg w-full flex flex-col items-center">
                   <div className="flex justify-between w-full max-w-xs mb-2">
                     <span>Prix unitaire :</span>
-                    <span className="font-bold">69,99&nbsp;€</span>
+                    <span className="font-bold">{prixUnitaire.toFixed(2).replace('.', ',')}&nbsp;€</span>
                   </div>
                   <div className="flex justify-between w-full max-w-xs mb-2">
                     <span>Quantité :</span>
                     <span className="font-bold">{quantite}</span>
                   </div>
+                  <div className="flex items-center gap-3 w-full max-w-xs mb-4">
+                    <input
+                      type="checkbox"
+                      id="bundle"
+                      checked={isBundle}
+                      onChange={(e) => setIsBundle(e.target.checked)}
+                      className="w-5 h-5 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 focus:ring-2"
+                    />
+                    <label htmlFor="bundle" className="text-lg font-medium cursor-pointer">
+                      Bundle (+ 25,10 €)
+                    </label>
+                  </div>
                   <div className="flex justify-between w-full max-w-xs text-xl mt-4 border-t pt-4 font-bold">
                     <span>Total :</span>
-                    <span>{total}&nbsp;€</span>
+                    <span>{total.replace('.', ',')}&nbsp;€</span>
                   </div>
                 </div>
               </div>
