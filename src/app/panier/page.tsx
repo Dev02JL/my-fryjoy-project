@@ -12,7 +12,7 @@ export default function PanierPage() {
             style={{ minWidth: 0 }}
           >
             <span className="text-2xl">←</span>
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
         </div>
         <SectionCommandePanier />
